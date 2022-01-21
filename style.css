@@ -52,29 +52,40 @@ main{
     padding: 0.5rem;
 }
 
-.result h1{
-    font-size: 1.3rem;
+
+.result {
+    font-size: 0.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    border: 1px solid;
 }
 
 .options{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    border: 1px solid;
     
 }
 
 .option{
     display: flex;
     justify-content: center;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 img{
     width: 50%;
-    height: 200px;
+    height: 146px;
     border-radius: 50%;
 }
+
+
 
 
 @media (min-width: 800px) {
