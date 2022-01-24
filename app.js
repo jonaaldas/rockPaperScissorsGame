@@ -2,10 +2,15 @@
 
 const comp_span = document.querySelector('.comp');
 const user_span = document.querySelector('.user');
-const you = document.querySelector('.user-socore');
+computerScore = 0;
+userScore = 0
+
+const resultMsg = document.querySelector('.result-msg');
+
+const you = document.querySelector('.user-score');
 
 const results = document.querySelector('.results')
-
+const options = document.querySelector('.options')
 const option = document.querySelectorAll('.option');
 
 // Random Computer Generated 
@@ -20,53 +25,77 @@ option.forEach(e => {
 
 let mySelection;
 //we select the option we want
-function userGame(e){
+function userGame(){
     mySelection = this.id;
-    if(mySelection === 'r'){
-        option[1].remove();
-        option[2].remove();
-    } else if(mySelection === 'p'){
-        option[0].remove();
-        option[2].remove();
-    } else {
-        option[0].remove();
-        option[1].remove();
-    }
-
-    timeOut()
-   
-    // setTimeout(function(){
-    // }, 3000)
+    gameFunctionality(computer_selector, mySelection)
 }
 
 const log = console.log
 function gameFunctionality(computer, user){
 
     if(computer === 'r' && user === 'p' || computer === 'p' && user === 'r'){
+        if(user === 'p'){
+            user_span.innerHTML++
+            resultMsg.innerText = `${playerName} Paper beats computers Rock`
+        } 
+        if(computer === 'p') {
+            comp_span.innerHTML++
+            resultMsg.innerText = `Computers Paper beats ${playerName} Rock`
+        }
         log('Paper Wins');
     } else if(computer === 'p' && user === 's' || computer === 's' && user === 'p'){
+        if(user === 's'){
+            user_span.innerHTML++
+            resultMsg.innerText = `${playerName} Scissors beats computers Paper`
+        } else if(computer === 's') {
+            comp_span.innerHTML++;
+            resultMsg.innerText = `Computers Scissors beats ${playerName} Paper`
+        }
         log('Scissors Beats Paper');
     } else if(computer === 'r' && user === 's' || computer === 's' && user === 'r'){
+        if(user === 'r'){
+            user_span.innerHTML++
+            resultMsg.innerText = `${playerName} Rock beats computers Scissors`
+        } else if(computer === 'r') {
+            comp_span.innerHTML++;
+            resultMsg.innerText = `Computers Rock beats ${playerName} Scissors`
+        }
         log('Rock Beats Paper');
    } else if(computer === user){
-       log('Tie')
+       log('Tie');
+       resultMsg.innerText = `Its a tie`
    }
+
 }
 
 
-let stopTimer;
-let timerHTML;
-let counter;
-function timeOut(){
-    counter = 3
-    timerHTML = document.querySelector('p');
-    timerHTML.innerHTML = counter
-    stopTimer = setInterval(() => {
-        timerHTML.innerHTML = counter--
-        console.log('I am the interval')
-        if(counter === -1){
-            clearInterval(stopTimer)
-            gameFunctionality(computer_selector, mySelection)
-        }
-    }, 1000);
+// player selcts its chooses its name 
+
+const btnStart = document.querySelector('.btn-start');
+btnStart.addEventListener('click', getName);
+
+let playerName;
+function getName(){
+    playerName = prompt('what is your name?');
+    you.innerText = playerName;
+    btnStart.remove()
+    selctOption();
+    options.style.display = 'block';
+    comp_span.innerText = computerScore;
+    user_span.innerText = userScore;
 }
+
+
+//starts the game by asking them to select an option
+
+function selctOption(){
+    document.querySelector('.question').style.display = 'block';
+}
+
+let restartGameBtn = document.querySelector('.btn-restart');
+restartGameBtn.addEventListener('click', reloadGame);
+
+function reloadGame(){
+    window.location.reload()
+}
+
