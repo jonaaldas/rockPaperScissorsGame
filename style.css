@@ -59,7 +59,7 @@ main{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid;
+    /* border: 1px solid; */
 }
 
 .options{
@@ -68,7 +68,7 @@ main{
     justify-content: center;
     align-items: center;
     height: 70vh;
-    border: 1px solid;
+    /* border: 1px solid; */
     display: none;
     
 }
@@ -118,7 +118,7 @@ img{
         flex-direction: row;
     }
     .option{
-        border: 1px solid;
+        /* border: 1px solid; */
         margin: 10px
     }
     .option img{
